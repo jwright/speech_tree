@@ -3,7 +3,7 @@ module SpeechTree
     attr_reader :stack
 
     def initialize
-      @stack = []
+      @stack = Stack.new
     end
 
     def <<(expression)

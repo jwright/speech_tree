@@ -12,8 +12,17 @@ RSpec.describe SpeechTree::Tree do
       it "adds an expression to the stack" do
         subject << SpeechTree::ConstantExpression.new(5)
 
-        expect(subject.stack.last).to be_kind_of SpeechTree::ConstantExpression
+        expect(subject.stack.peek).to be_kind_of SpeechTree::ConstantExpression
       end
+    end
+
+    context "with an operand expression" do
+      xit "adds an expression to the stack"
+    end
+
+    context "with an operator expression" do
+      xit "replaces the last two expressions with the expression"
+      xit "the expression now has two children"
     end
   end
 
