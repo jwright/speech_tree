@@ -5,5 +5,9 @@ module SpeechTree
     def initialize
       @stack = []
     end
+
+    def <<(expression)
+      stack << expression
+    end
   end
 end

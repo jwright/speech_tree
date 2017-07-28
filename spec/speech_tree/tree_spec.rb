@@ -7,7 +7,13 @@ RSpec.describe SpeechTree::Tree do
 
   describe "<<" do
     context "with an empty stack" do
-      xit "adds an expression to the stack"
+      subject { described_class.new }
+
+      it "adds an expression to the stack" do
+        subject << SpeechTree::ConstantExpression.new(5)
+
+        expect(subject.stack.last).to be_kind_of SpeechTree::ConstantExpression
+      end
     end
   end
 
