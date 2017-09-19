@@ -17,11 +17,29 @@ RSpec.describe SpeechTree::Tree do
     end
 
     context "with an operand expression" do
-      xit "adds an expression to the stack"
+      subject { described_class.new SpeechTree::ConstantExpression.new(3) }
+
+      it "adds an expression to the stack" do
+        subject << SpeechTree::ConstantExpression.new(5)
+
+        expect(subject.stack.pop.value).to eq 5
+        expect(subject.stack.pop.value).to eq 3
+      end
     end
 
     context "with an operator expression" do
-      xit "replaces the last two expressions with the expression"
+      before do
+        subject << SpeechTree::ConstantExpression.new(3)
+        subject << SpeechTree::ConstantExpression.new(5)
+      end
+
+      it "replaces the last two expressions with the expression" do
+        subject << SpeechTree::BinaryOperatorExpression.new(:+)
+
+        expect(subject.stack.peek).to be_kind_of SpeechTree::BinaryOperatorExpression
+        expect(subject.stack.length).to eq 1
+      end
+
       xit "the expression now has two children"
     end
   end
